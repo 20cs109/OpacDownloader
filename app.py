@@ -30,6 +30,7 @@ with webdriver.Chrome() as driver:
     WebDriverWait(driver, timeout=3).until(lambda d: d.find_element(By.ID, "dept_name"))
     select_element = driver.find_element(By.ID, 'dept_name')
     select = Select(select_element)
+    time.sleep(1)
     select.select_by_visible_text(dept)
 
     dept_field = driver.find_element(By.CSS_SELECTOR, 'input[placeholder="Enter any SubjectName"]')
