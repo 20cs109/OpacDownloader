@@ -27,10 +27,10 @@ with webdriver.Chrome() as driver:
     qBankBtn = driver.find_element(By.XPATH, "//*[contains(text(), 'Question Bank')]")
     qBankBtn.click()
     WebDriverWait(driver, timeout=3).until(lambda d: d.find_element(By.ID, "course_name"))
-
+    WebDriverWait(driver, timeout=3).until(lambda d: d.find_element(By.ID, "dept_name"))
     select_element = driver.find_element(By.ID, 'dept_name')
     select = Select(select_element)
-    select.select_by_value(dept)
+    select.select_by_visible_text(dept)
 
     dept_field = driver.find_element(By.CSS_SELECTOR, 'input[placeholder="Enter any SubjectName"]')
     dept_field.send_keys(subject)
@@ -73,4 +73,4 @@ with webdriver.Chrome() as driver:
         driver.close()
         driver.switch_to.window(original_window)
         print(x)
-    WebDriverWait(driver, 3)
+    time.sleep(5)
